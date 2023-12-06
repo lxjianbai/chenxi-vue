@@ -13,7 +13,7 @@
         <el-button :icon="customIcons[iconValue]" />
       </template>
     </el-input>
-    <el-dialog v-model="dialogVisible" :title="placeholder" top="50px" width="66%">
+    <el-dialog v-model="dialogVisible" :title="placeholder" top="50px" width="50%">
       <el-input v-model="inputValue" placeholder="搜索图标" size="large" :prefix-icon="Icons.Search" />
       <el-scrollbar v-if="Object.keys(iconsList).length">
         <div class="icon-list">

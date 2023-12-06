@@ -32,7 +32,8 @@ export const useTable = (
     // 初始化默认的查询参数
     searchInitParam: {},
     // 总参数(包含分页和查询参数)
-    totalParam: {}
+    totalParam: {},
+    loading: false
   });
 
   /**
@@ -55,6 +56,7 @@ export const useTable = (
    * @return void
    * */
   const getTableList = async () => {
+    state.loading = true;
     if (!api) return;
     try {
       // 先把初始化参数和分页参数放到总参数里面
@@ -67,7 +69,9 @@ export const useTable = (
         const { pageNum, pageSize, total } = data;
         updatePageable({ pageNum, pageSize, total });
       }
+      state.loading = false;
     } catch (error) {
+      state.loading = false;
       requestError && requestError(error);
     }
   };
