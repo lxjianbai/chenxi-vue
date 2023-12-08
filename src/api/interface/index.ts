@@ -30,6 +30,14 @@ export namespace Upload {
   }
 }
 
+// 状态模块
+export namespace IStatus {
+  export interface ReqChangeStatus {
+    id: number;
+    status: number;
+  }
+}
+
 // 登录模块
 export namespace Login {
   export interface ReqLoginForm {

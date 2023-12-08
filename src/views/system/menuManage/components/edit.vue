@@ -28,26 +28,36 @@
           :check-on-click-node="true"
         />
       </el-form-item>
-      <div v-show="drawerProps.row.type != 3">
-        <el-form-item label="菜单标题" prop="title">
-          <el-input v-model="menuMeta.title" placeholder="请填写菜单标题" clearable></el-input>
-        </el-form-item>
-      </div>
+      <el-form-item label="菜单标题" prop="title">
+        <el-input v-model="menuMeta.title" placeholder="请填写菜单标题" clearable></el-input>
+      </el-form-item>
       <div v-show="drawerProps.row.type == 2">
-        <el-form-item label="菜单标识" prop="name">
-          <el-input v-model="drawerProps.row.name" placeholder="请填写菜单标识" clearable></el-input>
+        <el-form-item prop="name">
+          <template #label>
+            <span>菜单标识</span>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              placement="top"
+              content="必须是前端vue页面的name,例如<script setup lang='ts' name='systemMenu'"
+            >
+              <QuestionFilled style="width: 1em; margin-right: 8px" />
+            </el-tooltip>
+            <span>:</span>
+          </template>
+          <el-input v-model="drawerProps.row.name" clearable></el-input>
         </el-form-item>
 
         <el-form-item label="页面路由" prop="path">
           <el-input v-model="drawerProps.row.path" clearable></el-input>
         </el-form-item>
 
-        <el-form-item label="外链地址" prop="redirect">
-          <el-input v-model="drawerProps.row.redirect" clearable></el-input>
-        </el-form-item>
-
         <el-form-item label="组件路径" prop="component">
           <el-input v-model="drawerProps.row.component as string" clearable></el-input>
+        </el-form-item>
+
+        <el-form-item label="外链地址" prop="redirect">
+          <el-input v-model="drawerProps.row.redirect" clearable></el-input>
         </el-form-item>
 
         <el-form-item label="是否固定" prop="is_affix">
@@ -64,7 +74,19 @@
           </el-radio-group>
         </el-form-item>
 
-        <el-form-item label="是否缓存" prop="is_keepalive">
+        <el-form-item prop="is_keepalive">
+          <template #label>
+            <span>是否缓存</span>
+            <el-tooltip
+              class="item"
+              effect="dark"
+              placement="top"
+              content="选择是在切换tab页面后,返回页面不会重新加载,保留上次浏览记录,否则会重新加载"
+            >
+              <QuestionFilled style="width: 1em; margin-right: 8px" />
+            </el-tooltip>
+            <span>:</span>
+          </template>
           <el-radio-group v-model="menuMeta.isKeepAlive">
             <el-radio :label="1">是</el-radio>
             <el-radio :label="0">否</el-radio>
@@ -104,6 +126,7 @@ import { ElMessage, FormInstance } from "element-plus";
 import { TreeOptionProps } from "element-plus/es/components/tree/src/tree.type";
 import { TreeNodeData } from "element-plus/es/components/tree-v2/src/types";
 import SelectIcon from "@/components/SelectIcon/index.vue";
+import { QuestionFilled } from "@element-plus/icons-vue";
 
 const dirRules = {
   type: [{ required: true, message: "请选择类型" }],
@@ -112,6 +135,7 @@ const dirRules = {
 
 const menuRules = {
   type: [{ required: true, message: "请选择类型" }],
+  name: [{ required: true, message: "请填写菜单标识" }],
   title: [{ required: true, message: "请填写菜单标题" }],
   path: [{ required: true, message: "请填写页面路由" }],
   component: [{ required: true, message: "请填写组件路径" }]

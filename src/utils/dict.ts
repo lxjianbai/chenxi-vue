@@ -24,3 +24,11 @@ export const sysMenuType = [
   { label: "菜单", value: 2, tagType: "warning" },
   { label: "按钮", value: 3, tagType: "danger" }
 ];
+
+/**
+ * @description：通用状态
+ */
+export const enableStatus = [
+  { label: "启用", value: 1, tagType: "success" },
+  { label: "禁用", value: 0, tagType: "danger" }
+];

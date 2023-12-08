@@ -70,7 +70,6 @@ const login = (formEl: FormInstance | undefined) => {
     try {
       // 1.执行登录接口
       const { data } = await loginApi({ ...loginForm, password: md5(loginForm.password) });
-      console.log(data);
       userStore.setToken(data.token);
       userStore.setUserInfo({ name: data.name, avatar: data.avatar });
 

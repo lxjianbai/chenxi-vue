@@ -1,11 +1,11 @@
 import http from "@/api";
-import { IMenu } from "@/api/interface/sys/menu";
+import { ISysMenu } from "@/api/interface/sys/menu";
 
 /**
- * @name 用户管理模块
+ * @name  菜单管理模块
  */
-// 获取用户列表
-export const getMenuList = (params: IMenu.ReqMenuParams) => {
+// 获取菜单列表
+export const getMenuList = (params: ISysMenu.ReqSysMenuParams) => {
   return http.get<Menu.MenuOptions[]>(`/sys/menu/list`, params);
 };
 

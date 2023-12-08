@@ -1,5 +1,5 @@
-export namespace IMenu {
-  export interface ReqMenuParams {
+export namespace ISysMenu {
+  export interface ReqSysMenuParams {
     title: string;
   }
 }

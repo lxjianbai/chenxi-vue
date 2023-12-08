@@ -6,7 +6,10 @@ export const useUserStore = defineStore({
   id: "geeker-user",
   state: (): UserState => ({
     token: "",
-    userInfo: { name: "Geeker" }
+    userInfo: {
+      name: "",
+      avatar: ""
+    }
   }),
   getters: {},
   actions: {
